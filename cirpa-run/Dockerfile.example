@@ -1,0 +1,14 @@
+FROM python:alpine
+
+COPY . /src/
+
+# installing requirements
+RUN pip install -r /src/requirements.txt
+
+# installing cirpa-run
+RUN pip install /src
+
+# installing the example module
+RUN pip install /src/doc/examples
+
+CMD ["cirpa-run","--config","/src/doc/examples/example.conf", "--fruit", "ananas", "--weight", "100kg"]

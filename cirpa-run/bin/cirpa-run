@@ -1,0 +1,172 @@
+#!/usr/bin/env python
+from cirpa.run import main
+#!/usr/bin/env python
+from cirpa.run.main import main
+main()
+
+# #!/bin/python
+#
+# import sys
+# import argparse
+# import json
+# import os
+# import importlib
+#
+# class Start:
+#
+#     filename = "config/cirpa.conf"
+#
+#     def load_module(self,filename):
+#         sys.path.append(os.path.dirname(filename))
+#         mname = os.path.splitext(os.path.basename(filename))[0]
+#         imported = importlib.import_module(mname)
+#         sys.path.pop()
+#         return imported
+#
+#     def __init__(self,argv):
+#
+#         self.starts = []
+#
+#         # handle the arguments
+#         parentParser = argparse.ArgumentParser("CIRPA arguments", conflict_handler="resolve", add_help=False)
+#         parentParser.add_argument('--config',dest='config',required=False,default=None)
+#         args,notparsed = parentParser.parse_known_args(argv)
+#
+#         if args.config:
+#             self.filename = args.config
+#
+#         if os.path.isfile(self.filename):
+#             with open(self.filename,"r+") as f:
+#                 self.modules = json.loads(f.read())
+#         else:
+#             print("config file: %s does not exist" % self.filename)
+#             sys.exit(1)
+#
+#         try:
+#             for k,c in self.modules.items():
+#                 #m = importlib.import_module(k)
+#                 m = self.load_module(k)
+#                 self.add( getattr(m, c)() )
+#         except ImportError as err:
+#                 print('Error:', err)
+#                 sys.exit(1)
+#
+#         # get goals
+#         goals=[]
+#         for start in self.starts:
+#             if not start.goal in goals:
+#                 goals += [start.goal]
+#
+#         parser = argparse.ArgumentParser(conflict_handler="resolve", parents=[parentParser])
+#         parser.add_argument('--goal',choices=goals,required=True)
+#         self.parser = parser
+#
+#         # handle arguments for the start classes
+#         for start in self.starts:
+#             start.arguments(self.parser)
+#         self.args = self.parser.parse_args(notparsed[1:])
+#
+#     def add(self, start):
+#         self.starts += [start]
+#
+#     def execute(self):
+#         args = vars(self.args)
+#         try:
+#             for start in self.starts:
+#                 if start.evaluate(args):
+#                     return start.execute(args) # only execute the first True evaluated start class
+#         except Exception as e:
+#                 print(e)
+#                 sys.exit(1)
+#
+#         print("nothing to execute")
+#         sys.exit(1)
+#
+#
+# starts = Start(sys.argv)
+#
+# starts.execute()
+main()
+
+# #!/bin/python
+#
+# import sys
+# import argparse
+# import json
+# import os
+# import importlib
+#
+# class Start:
+#
+#     filename = "config/cirpa.conf"
+#
+#     def load_module(self,filename):
+#         sys.path.append(os.path.dirname(filename))
+#         mname = os.path.splitext(os.path.basename(filename))[0]
+#         imported = importlib.import_module(mname)
+#         sys.path.pop()
+#         return imported
+#
+#     def __init__(self,argv):
+#
+#         self.starts = []
+#
+#         # handle the arguments
+#         parentParser = argparse.ArgumentParser("CIRPA arguments", conflict_handler="resolve", add_help=False)
+#         parentParser.add_argument('--config',dest='config',required=False,default=None)
+#         args,notparsed = parentParser.parse_known_args(argv)
+#
+#         if args.config:
+#             self.filename = args.config
+#
+#         if os.path.isfile(self.filename):
+#             with open(self.filename,"r+") as f:
+#                 self.modules = json.loads(f.read())
+#         else:
+#             print("config file: %s does not exist" % self.filename)
+#             sys.exit(1)
+#
+#         try:
+#             for k,c in self.modules.items():
+#                 #m = importlib.import_module(k)
+#                 m = self.load_module(k)
+#                 self.add( getattr(m, c)() )
+#         except ImportError as err:
+#                 print('Error:', err)
+#                 sys.exit(1)
+#
+#         # get goals
+#         goals=[]
+#         for start in self.starts:
+#             if not start.goal in goals:
+#                 goals += [start.goal]
+#
+#         parser = argparse.ArgumentParser(conflict_handler="resolve", parents=[parentParser])
+#         parser.add_argument('--goal',choices=goals,required=True)
+#         self.parser = parser
+#
+#         # handle arguments for the start classes
+#         for start in self.starts:
+#             start.arguments(self.parser)
+#         self.args = self.parser.parse_args(notparsed[1:])
+#
+#     def add(self, start):
+#         self.starts += [start]
+#
+#     def execute(self):
+#         args = vars(self.args)
+#         try:
+#             for start in self.starts:
+#                 if start.evaluate(args):
+#                     return start.execute(args) # only execute the first True evaluated start class
+#         except Exception as e:
+#                 print(e)
+#                 sys.exit(1)
+#
+#         print("nothing to execute")
+#         sys.exit(1)
+#
+#
+# starts = Start(sys.argv)
+#
+# starts.execute()
